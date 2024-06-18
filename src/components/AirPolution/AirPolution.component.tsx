@@ -1,9 +1,10 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
+import ReactLoading from "react-loading";
+import { LocationContext } from "../../context/LocationContext";
 import { IChartData } from "../../dto/IChartData";
 import { useFetchWeather } from "../../hooks/useFetchWeather";
 import { buildAirPolutionSeries, updateDates } from "../../shared/utils";
 import ChartComponent from "../ChartComponent/ChartComponent";
-import { LocationContext } from "../../context/LocationContext";
 
 interface AirPolutionComponentProps {}
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -13,7 +14,7 @@ const AirPolutionComponent: FunctionComponent<
 > = () => {
   const { locationData } = useContext(LocationContext);
 
-  const { getAirPolutionData } = useFetchWeather();
+  const { isLoading, getAirPolutionData } = useFetchWeather();
   const [chartData, setChartData] = useState<IChartData>();
 
   const fetchData = async () => {
@@ -38,10 +39,10 @@ const AirPolutionComponent: FunctionComponent<
 
   return (
     <>
-      <h1>Air pol</h1>
-      {/* {chartData && <LineChartComponent data={chartData} />} */}
-      {chartData && (
+      {!isLoading && chartData ? (
         <ChartComponent chartData={chartData} chartName="Air Polution" />
+      ) : (
+        <ReactLoading type={"spin"} color={"black"} height={20} width={20} />
       )}
     </>
   );

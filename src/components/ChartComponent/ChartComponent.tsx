@@ -1,19 +1,19 @@
 import {
+  ArcElement,
+  BarElement,
   CategoryScale,
   Chart as ChartJS,
+  Filler,
   Legend,
   LineElement,
   LinearScale,
   PointElement,
+  RadialLinearScale,
   Title,
   Tooltip,
-  ArcElement,
-  BarElement,
-  RadialLinearScale,
-  Filler,
 } from "chart.js";
 import { FunctionComponent } from "react";
-import { Chart, Line } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 import { IChartData } from "../../dto/IChartData";
 
 interface ChartComponentProps {

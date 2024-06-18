@@ -1,10 +1,12 @@
 import { useState } from "react";
 import {
   fetchAirPolutionData,
+  fetchCurrentWeather,
   fetchPrecipitacionProbability,
 } from "../api/weatherApi";
 import { IWeatherResponse } from "../dto/WeaatherResponse";
 import { IPrecipitationResponse } from "../dto/PrecipitationResponse";
+import { ICurrentWeatherResponse } from "../dto/CurrentWeatherResponse";
 
 export const useFetchWeather = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,5 +43,26 @@ export const useFetchWeather = () => {
       setIsLoading(false);
     }
   };
-  return { isLoading, getAirPolutionData, getPrecipitationProbabilityData };
+
+  const getCurrentWeatherData = async (
+    lat: number,
+    lon: number
+  ): Promise<ICurrentWeatherResponse> => {
+    setIsLoading(true);
+    try {
+      const { data } = await fetchCurrentWeather(lat, lon);
+      return data as ICurrentWeatherResponse;
+    } catch (error) {
+      return error as ICurrentWeatherResponse;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return {
+    isLoading,
+    getAirPolutionData,
+    getPrecipitationProbabilityData,
+    getCurrentWeatherData,
+  };
 };

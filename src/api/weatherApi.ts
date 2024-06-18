@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IWeatherResponse } from "../dto/WeaatherResponse";
 
 export const fetchAirPolutionData = (
   lat: number,
@@ -14,11 +13,10 @@ export const fetchAirPolutionData = (
       lon,
       start,
       end,
+      units: "metric",
     },
   });
 };
-
-//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 export const fetchPrecipitacionProbability = (
   lat: number,
@@ -30,6 +28,18 @@ export const fetchPrecipitacionProbability = (
       appid: process.env.REACT_APP_API_KEY,
       lat,
       lon,
+      units: "metric",
+    },
+  });
+};
+
+export const fetchCurrentWeather = (lat: number, lon: number) => {
+  return axios.get(`${process.env.REACT_APP_ENDPOINT}weather`, {
+    params: {
+      appid: process.env.REACT_APP_API_KEY,
+      lat,
+      lon,
+      units: "metric",
     },
   });
 };
