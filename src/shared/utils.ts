@@ -70,14 +70,14 @@ export const builPrecipitationSeries = (
   const valuePerKey: any = {};
   const labels: string[] = [];
 
-  list.forEach((current) => {
+  list.slice(0, 5).forEach((current) => {
     const { dt_txt, main, pop } = current;
     labels.push(dt_txt.toLocaleString());
 
     if (!valuePerKey[PRECIPITACION_PROB]) {
       valuePerKey[PRECIPITACION_PROB] = [];
     }
-    valuePerKey[PRECIPITACION_PROB].push(pop * 100);
+    valuePerKey[PRECIPITACION_PROB].push(pop);
 
     if (!valuePerKey[TEMP_LABEL]) {
       valuePerKey[TEMP_LABEL] = [];
