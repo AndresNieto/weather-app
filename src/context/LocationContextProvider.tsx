@@ -15,7 +15,6 @@ const LocationContextProvider: FunctionComponent<
   const [locationData, setLocationData] = useState<LocationData>();
 
   const updateLocationData = (newLocationData: LocationData) => {
-    console.log(newLocationData);
     setLocationData(newLocationData);
   };
 

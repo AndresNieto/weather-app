@@ -14,7 +14,6 @@ const DashboardComponent: FunctionComponent<DashboardPageProps> = () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-      console.log({ lat, lon });
       updateLocationData({
         lat,
         lon,
