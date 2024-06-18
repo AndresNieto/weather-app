@@ -7,7 +7,6 @@ import { buildAirPolutionSeries, updateDates } from "../../shared/utils";
 import ChartComponent from "../ChartComponent/ChartComponent";
 
 interface AirPolutionComponentProps {}
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const AirPolutionComponent: FunctionComponent<
   AirPolutionComponentProps
@@ -21,7 +20,6 @@ const AirPolutionComponent: FunctionComponent<
     if (!locationData) return;
     const { lat, lon } = locationData;
     const start = updateDates(new Date(), -1);
-    const end = new Date();
 
     const response = await getAirPolutionData(
       lat,

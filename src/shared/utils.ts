@@ -1,27 +1,6 @@
 import { Dataset, IChartData } from "../dto/IChartData";
 import { IPrecipitationResponse } from "../dto/PrecipitationResponse";
 import { IWeatherResponse } from "../dto/WeaatherResponse";
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export const buildChartSeries = (data: IWeatherResponse) => {
-  const { list } = data;
-  const dataBuilded: any = [];
-
-  list.forEach((current) => {
-    const { components } = current;
-    const polutionObj: any = {};
-
-    Object.keys(components).forEach((key: string) => {
-      polutionObj[key] = components[key];
-    });
-    const newRow = {
-      label: current.dt,
-      data: [polutionObj],
-    };
-    dataBuilded.push(newRow);
-  });
-
-  return dataBuilded;
-};
 
 export const buildAirPolutionSeries = (data: IWeatherResponse): IChartData => {
   const { list } = data;

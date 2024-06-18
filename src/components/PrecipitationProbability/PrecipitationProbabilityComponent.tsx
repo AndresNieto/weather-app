@@ -37,7 +37,7 @@ const PrecipitationProbabilityComponent: FunctionComponent<
   return (
     <>
       {!isLoading && chartData ? (
-        <ChartComponent chartData={chartData} chartName="Precipitaion" />
+        <ChartComponent chartData={chartData} chartName="Precipitation" />
       ) : (
         <ReactLoading type={"spin"} color={"black"} height={20} width={20} />
       )}
